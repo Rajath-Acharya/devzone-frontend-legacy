@@ -1,50 +1,24 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import FeedsScreen from '../screens/FeedsScreen';
-import ProfileScreen from '../screens/ProfileScreen';
-import SavedScreen from '../screens/SavedScreen';
-import NotificationsScreen from '../screens/NotificationsScreen';
+import TabNavigation from './TabNavigation';
+import SettingsScreen from '../screens/SettingsScreen';
 
 const Stack = createNativeStackNavigator();
-const Tab = createBottomTabNavigator();
 
 const AppNavigation = () => {
   return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen
         name="Home"
-        component={TabScreens}
+        component={TabNavigation}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={SettingsScreen}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
-  );
-};
-
-const TabScreens = () => {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen
-        name="Feed"
-        component={FeedsScreen}
-        options={{headerShown: false}}
-      />
-      <Tab.Screen
-        name="Saved"
-        component={SavedScreen}
-        options={{headerShown: false}}
-      />
-      <Tab.Screen
-        name="Notification"
-        component={NotificationsScreen}
-        options={{headerShown: false}}
-      />
-      <Tab.Screen
-        name="Profile"
-        component={ProfileScreen}
-        options={{headerShown: false}}
-      />
-    </Tab.Navigator>
   );
 };
 
