@@ -1,11 +1,13 @@
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
-import GlobalNavigation from './src/navigation/GlobalNavigation';
+import AppNavigation from './src/navigation/AppNavigation';
+import AuthNavigation from './src/navigation/AuthNavigation';
 
 function App(): JSX.Element {
+  const isLoggedIn = true;
   return (
     <NavigationContainer>
-      <GlobalNavigation />
+      {isLoggedIn ? <AppNavigation /> : <AuthNavigation />}
     </NavigationContainer>
   );
 }
